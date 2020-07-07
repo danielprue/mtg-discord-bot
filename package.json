@@ -1,0 +1,11 @@
+{
+  "name": "MTG_CARD_FETCHER",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "12.2.0",
+    "axios": "0.19.2"
+  }
+}
