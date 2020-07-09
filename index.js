@@ -21,6 +21,7 @@ client.on('message', (msg) => {
         i != cardName.length - 1 ? (search += '+') : null;
       }
     }
+    console.log(search);
 
     Axios.get(search)
       .then((response) => {
