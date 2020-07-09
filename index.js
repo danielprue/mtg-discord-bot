@@ -7,21 +7,20 @@ client.on('ready', () => {
   console.log('MTG_CARD_FETCHER is online');
 });
 
-const queries = new Set(`${prefix}set`);
+const queries = new Set([`${prefix}set`]);
 
 client.on('message', (msg) => {
   if (msg.content.startsWith(`${prefix}card`)) {
     let search = scryfall;
     const cardName = msg.content.split(' ');
     for (let i = 1; i < cardName.length; i++) {
-      if (cardName[i] in queries) {
+      if (queries.has(cardName[i])) {
         search = search + '&' + cardName[i].slice(1) + '=';
       } else {
+        search.slice(-1) === '=' ? (search += '+') : null;
         search += cardName[i];
-        i != cardName.length - 1 ? (search += '+') : null;
       }
     }
-    console.log(search);
 
     Axios.get(search)
       .then((response) => {
