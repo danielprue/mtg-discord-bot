@@ -17,7 +17,7 @@ client.on('message', (msg) => {
       if (queries.has(cardName[i])) {
         search = search + '&' + cardName[i].slice(1) + '=';
       } else {
-        search.slice(-1) === '=' ? (search += '+') : null;
+        search.slice(-1) != '=' ? (search += '+') : null;
         search += cardName[i];
       }
     }
